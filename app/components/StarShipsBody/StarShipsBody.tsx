@@ -21,10 +21,6 @@ export default function StarShipsBody({ films }: { films: Film[] }) {
   >([]);
 
   useEffect(() => {
-    console.log("filtered by Input: ", filteredShipsByInput);
-  }, [filteredShipsByInput]);
-
-  useEffect(() => {
     const fetchStarships = async () => {
       let allStarships: any[] = [];
       let nextUrl = "https://swapi.dev/api/starships/";
