@@ -4,7 +4,12 @@ import DropDown from "../DropDown/DropDown";
 import { useState, useEffect } from "react";
 import { Film, StarShip } from "@/types";
 import SingleShipListElement from "../SingleShipListElement/SingleShipListElement";
-import { StyledUl, StyledInputContainer, StyledWInput } from "./styled";
+import {
+  StyledUl,
+  StyledInputContainer,
+  StyledWInput,
+  ClearBtn,
+} from "./styled";
 
 export default function StarShipsBody({ films }: { films: Film[] }) {
   const [pickedMovie, setPickedMovie] = useState<
@@ -73,6 +78,10 @@ export default function StarShipsBody({ films }: { films: Film[] }) {
     setInputText(e.currentTarget.value);
   };
 
+  const handleClearInput = () => {
+    setInputText("");
+  };
+
   return (
     <div>
       <DropDown
@@ -83,6 +92,7 @@ export default function StarShipsBody({ films }: { films: Film[] }) {
       <StyledInputContainer>
         <p>Search Ship: </p>
         <StyledWInput value={inputText} onChange={handleInput} />
+        <ClearBtn onClick={handleClearInput}> Clear input </ClearBtn>
       </StyledInputContainer>
       <StyledUl>
         {inputText.length === 0 ? (
