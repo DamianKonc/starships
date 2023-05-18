@@ -1,10 +1,19 @@
-import Link from "next/link"
+import type { Metadata } from "next";
+import StarShipsBody from "./components/StarShipsBody/StarShipsBody";
+import getAllFilms from "@/lib/getAllFilms";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "StarShips",
+};
+
+export default async function StarShipsPage() {
+  const filmsData = getAllFilms();
+
+  const films = await filmsData;
+
   return (
-    <main >
-     <h1>Home Page</h1>
-     <Link href="/starships">Starships</Link>
-    </main>
-  )
+    <section>
+      <StarShipsBody films={films.results} />
+    </section>
+  );
 }
