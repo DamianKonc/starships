@@ -34,3 +34,23 @@ export const ClearBtn = styled.button`
   background-color: darkred;
   color: lightcoral;
 `;
+
+export const Spinner = styled.div`
+  margin: auto;
+  border: 16px solid darkblue;
+  border-top: 16px darkred solid;
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+  animation: spin 1s linear infinite;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
