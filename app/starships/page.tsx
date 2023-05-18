@@ -1,16 +1,18 @@
 import type { Metadata } from "next"
-import getAllShips from "@/lib/getAllShips"
 import Link from "next/link"
+import StarShipsBody from "../components/StarShipsBody/StarShipsBody"
+import getAllFilms from "@/lib/getAllFilms"
+import getAllShips from "@/lib/getAllShips"
 
 export const metadata: Metadata={
     title: 'StarShips'
 }
 
 export default async function StarShipsPage() {
-    const shipsData: Promise<AllStarShips> = getAllShips()
+    const filmsData: Promise<AllFilms> = getAllFilms()
 
-    const starShips = await shipsData
-
+    const films = await filmsData;
+    
 
     const content = (
         <section>
@@ -18,17 +20,7 @@ export default async function StarShipsPage() {
                 <Link href="/"> Back to Home</Link>
             </h2>
             <br/>
-            {starShips.results.map(starShip=>{
-                console.log(starShip.url)
-                return(
-                    <>
-                    <p key={starShip.url}>
-                        <Link href={`/starships/${starShip.url.slice(31)}/`}>{starShip.url}</Link>
-                    </p>
-                    </>
-                )
-            })}
-            <br/>
+            <StarShipsBody films={films.results}/>
         </section>
     )
 
