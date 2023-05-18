@@ -9,7 +9,7 @@ export const metadata: Metadata={
 }
 
 export default async function StarShipsPage() {
-    const filmsData: Promise<AllFilms> = getAllFilms()
+    const filmsData = getAllFilms()
 
     const films = await filmsData;
     

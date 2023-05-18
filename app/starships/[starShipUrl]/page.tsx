@@ -8,8 +8,8 @@ type Params = {
 }
 
 export async function generateMetadata({params: {starShipUrl}}: Params): Promise<Metadata>{
-    const starShipData: Promise<StarShip> = getShip(`https://swapi.dev/api/starships/${starShipUrl}`)
-    const starShip: StarShip = await starShipData
+    const starShipData = getShip(`https://swapi.dev/api/starships/${starShipUrl}`)
+    const starShip= await starShipData
 
     return{
         title: starShip.name,
@@ -18,7 +18,7 @@ export async function generateMetadata({params: {starShipUrl}}: Params): Promise
 }
 
 export default async function StarShipPage({params: {starShipUrl}}: Params) {
-    const starShipData: Promise<StarShip> = getShip(`https://swapi.dev/api/starships/${starShipUrl}`)
+    const starShipData = getShip(`https://swapi.dev/api/starships/${starShipUrl}`)
     const starShip = await starShipData
 
   return (
