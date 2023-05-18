@@ -1,18 +1,22 @@
-import './globals.css'
+import "./globals.css";
+import StyledComponentsRegistry from "@/lib/registry";
 
 export const metadata = {
-  title: 'Starships',
-  description: 'Star Wars Starships',
-}
+  title: "Starships",
+  description: "Star Wars Starships",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html>
-      <body >{children}</body>
+      <body style={{ backgroundColor: "lightgray" }}>
+        {" "}
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+      </body>
     </html>
-  )
+  );
 }
