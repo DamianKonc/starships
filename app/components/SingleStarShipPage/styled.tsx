@@ -28,3 +28,13 @@ export const TableInfo = styled.p`
   font-size: 20px;
   text-align: right;
 `;
+
+export const ReturnBtn = styled.a`
+  margin-top: 20px;
+  text-decoration: none;
+  color: darkgray;
+  background-color: darkred;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+`;

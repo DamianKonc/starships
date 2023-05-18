@@ -1,7 +1,13 @@
 "use client";
 import React from "react";
 import { StarShip } from "@/types";
-import { Container, TableRow, TableHeaders, TableInfo } from "./styled";
+import {
+  Container,
+  TableRow,
+  TableHeaders,
+  TableInfo,
+  ReturnBtn,
+} from "./styled";
 
 export default function SingleStarshipPage({
   starShip,
@@ -66,6 +72,7 @@ export default function SingleStarshipPage({
         <TableHeaders>starship class:</TableHeaders>
         <TableInfo>{starShip.starship_class}</TableInfo>
       </TableRow>
+      <ReturnBtn href="/">Go Back</ReturnBtn>
     </Container>
   );
 }
