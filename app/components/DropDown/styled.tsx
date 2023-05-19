@@ -8,7 +8,6 @@ export const DropDownWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
   margin-bottom: 20px;
   position: relative;
   z-index: 2;

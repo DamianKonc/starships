@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+  padding-top: 20px;
+  backdrop-filter: blur(10px);
+  min-height: 100vh;
+`;
+
 export const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
@@ -21,6 +27,12 @@ export const StyledInputContainer = styled.div`
   }
 `;
 
+export const SearchText = styled.p`
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+`;
+
 export const StyledWInput = styled.input`
   font-size: 20px;
   border-radius: 5px;
@@ -32,7 +44,7 @@ export const ClearBtn = styled.button`
   font-size: 15px;
   padding: 5px 10px;
   background-color: darkred;
-  color: lightcoral;
+  color: lightgray;
 `;
 
 export const Spinner = styled.div`
