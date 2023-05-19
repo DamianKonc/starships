@@ -11,7 +11,7 @@ import {
   ClearBtn,
   Spinner,
   Wrapper,
-  SearchText,
+  Text,
 } from "./styled";
 import BackgroundVideoComponent from "../BackgroundVideoComponent/BackgroundVideoComponent";
 
@@ -29,6 +29,10 @@ export default function StarShipsBody({ films }: { films: Film[] }) {
     [] | StarShip[]
   >([]);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    console.log(filteredStarships);
+  }, [filteredStarships]);
 
   useEffect(() => {
     const fetchStarships = async () => {
@@ -63,14 +67,19 @@ export default function StarShipsBody({ films }: { films: Film[] }) {
   };
 
   useEffect(() => {
-    const filteredStarships = starships.filter((ship) =>
-      ship.name.toLowerCase().includes(inputText.toLowerCase())
-    );
-    if (filteredStarships) {
+    let filteredStarshipsByInput: StarShip[];
+    filteredStarships.length > 0
+      ? (filteredStarshipsByInput = filteredStarships.filter((ship) =>
+          ship.name.toLowerCase().includes(inputText.toLowerCase())
+        ))
+      : (filteredStarshipsByInput = starships.filter((ship) =>
+          ship.name.toLowerCase().includes(inputText.toLowerCase())
+        ));
+    if (filteredStarshipsByInput) {
       setFilteredShipsByInput([]);
       setFilteredShipsByInput((prev: [] | StarShip[]) => [
         ...prev,
-        ...filteredStarships,
+        ...filteredStarshipsByInput,
       ]);
     }
   }, [inputText]);
@@ -97,7 +106,7 @@ export default function StarShipsBody({ films }: { films: Film[] }) {
           setPickedMovie={setPickedMovie}
         />
         <StyledInputContainer>
-          <SearchText>Search Ship: </SearchText>
+          <Text>Search Ship: </Text>
           <StyledWInput value={inputText} onChange={handleInput} />
           <ClearBtn onClick={handleClearInput}> Clear input </ClearBtn>
         </StyledInputContainer>
@@ -135,7 +144,7 @@ export default function StarShipsBody({ films }: { films: Film[] }) {
                 );
               })
             ) : (
-              <div>Theres no space ships with that name.</div>
+              <Text>Theres no space ships with that name.</Text>
             )}
           </StyledUl>
         )}
