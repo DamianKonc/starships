@@ -10,6 +10,8 @@ import {
   StyledWInput,
   ClearBtn,
   Spinner,
+  Wrapper,
+  SearchText,
 } from "./styled";
 import BackgroundVideoComponent from "../BackgroundVideoComponent/BackgroundVideoComponent";
 
@@ -88,14 +90,14 @@ export default function StarShipsBody({ films }: { films: Film[] }) {
 
   return (
     <>
-      <div>
+      <Wrapper>
         <DropDown
           filmsArray={films}
           pickedMovie={pickedMovie}
           setPickedMovie={setPickedMovie}
         />
         <StyledInputContainer>
-          <p>Search Ship: </p>
+          <SearchText>Search Ship: </SearchText>
           <StyledWInput value={inputText} onChange={handleInput} />
           <ClearBtn onClick={handleClearInput}> Clear input </ClearBtn>
         </StyledInputContainer>
@@ -137,7 +139,7 @@ export default function StarShipsBody({ films }: { films: Film[] }) {
             )}
           </StyledUl>
         )}
-      </div>
+      </Wrapper>
       <BackgroundVideoComponent />
     </>
   );
