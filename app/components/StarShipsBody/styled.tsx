@@ -27,7 +27,7 @@ export const StyledInputContainer = styled.div`
   }
 `;
 
-export const SearchText = styled.p`
+export const Text = styled.p`
   color: white;
   font-size: 18px;
   font-weight: bold;
