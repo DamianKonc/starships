@@ -32,7 +32,7 @@ export const ClearBtn = styled.button`
   font-size: 15px;
   padding: 5px 10px;
   background-color: darkred;
-  color: lightcoral;
+  color: lightgray;
 `;
 
 export const Spinner = styled.div`

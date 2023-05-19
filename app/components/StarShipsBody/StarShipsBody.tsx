@@ -11,6 +11,7 @@ import {
   ClearBtn,
   Spinner,
 } from "./styled";
+import BackgroundVideoComponent from "../BackgroundVideoComponent/BackgroundVideoComponent";
 
 export default function StarShipsBody({ films }: { films: Film[] }) {
   const [pickedMovie, setPickedMovie] = useState<
@@ -86,24 +87,44 @@ export default function StarShipsBody({ films }: { films: Film[] }) {
   };
 
   return (
-    <div>
-      <DropDown
-        filmsArray={films}
-        pickedMovie={pickedMovie}
-        setPickedMovie={setPickedMovie}
-      />
-      <StyledInputContainer>
-        <p>Search Ship: </p>
-        <StyledWInput value={inputText} onChange={handleInput} />
-        <ClearBtn onClick={handleClearInput}> Clear input </ClearBtn>
-      </StyledInputContainer>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <StyledUl>
-          {inputText.length === 0 ? (
-            pickedMovie.starships.length > 0 ? (
-              filteredStarships.map((starShip) => {
+    <>
+      <div>
+        <DropDown
+          filmsArray={films}
+          pickedMovie={pickedMovie}
+          setPickedMovie={setPickedMovie}
+        />
+        <StyledInputContainer>
+          <p>Search Ship: </p>
+          <StyledWInput value={inputText} onChange={handleInput} />
+          <ClearBtn onClick={handleClearInput}> Clear input </ClearBtn>
+        </StyledInputContainer>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <StyledUl>
+            {inputText.length === 0 ? (
+              pickedMovie.starships.length > 0 ? (
+                filteredStarships.map((starShip) => {
+                  return (
+                    <SingleShipListElement
+                      key={starShip.url}
+                      starShip={starShip}
+                    />
+                  );
+                })
+              ) : (
+                starships.map((starShip) => {
+                  return (
+                    <SingleShipListElement
+                      key={starShip.url}
+                      starShip={starShip}
+                    />
+                  );
+                })
+              )
+            ) : filteredShipsByInput.length > 0 ? (
+              filteredShipsByInput.map((starShip) => {
                 return (
                   <SingleShipListElement
                     key={starShip.url}
@@ -112,26 +133,12 @@ export default function StarShipsBody({ films }: { films: Film[] }) {
                 );
               })
             ) : (
-              starships.map((starShip) => {
-                return (
-                  <SingleShipListElement
-                    key={starShip.url}
-                    starShip={starShip}
-                  />
-                );
-              })
-            )
-          ) : filteredShipsByInput.length > 0 ? (
-            filteredShipsByInput.map((starShip) => {
-              return (
-                <SingleShipListElement key={starShip.url} starShip={starShip} />
-              );
-            })
-          ) : (
-            <div>Theres no space ships with that name.</div>
-          )}
-        </StyledUl>
-      )}
-    </div>
+              <div>Theres no space ships with that name.</div>
+            )}
+          </StyledUl>
+        )}
+      </div>
+      <BackgroundVideoComponent />
+    </>
   );
 }
